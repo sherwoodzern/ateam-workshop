@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name:  {name of your loadbalancer service}
+  namespace: default
+spec:
+  selector:
+    app:  {name-of-your-service}
+  type:  LoadBalancer
+  ports:
+  - name:  lb-port
+    port:  {port for your load balancer to listen on}
+    targetPort:  8080

@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: {name-of-your-service}
+    namespace: default
+    labels:
+        app: {name-of-your-service}
+        version: v1
+spec:
+    selector:
+        app: {name-of-your-service}
+    ports:
+        - port: 8080 
+          targetPort: 8080
+          name: http
+---
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+    name: {name-of-your-service}-v1
+    namespace: default
+    labels:
+        app: {name-of-your-service}
+        version: v1
+spec:
+    replicas: 1
+    template:
+        metadata:
+            labels:
+                app: {name-of-your-service}
+                version: v1
+        spec:
+            containers:
+                - image: {<github-acct>/image-name}:{tag}
+                  imagePullPolicy: Always
+                  name: welcome
+                  ports:
+                      - containerPort: 8080
