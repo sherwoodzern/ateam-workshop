@@ -1,0 +1,14 @@
+# This is a values.yaml for defaults, just leave it blank if it always needs to be set per-environment
+elasticsearch:
+  replicacount: 3
+  version: 6.5.4
+  ad: us-phoenix-1
+
+fluentd:
+  version: v1.3-debian-elasticsearch
+
+kibana:
+  version: 6.5.4
+
+efk:
+  namespace: kube-logging

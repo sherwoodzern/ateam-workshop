@@ -1,0 +1,126 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: elasticsearch
+  namespace: "{{ .Values.efk.namespace }}"
+  labels:
+    # k8s-app: es-cluster
+    kubernetes.io/cluster-service: "true"
+    addonmanager.kubernetes.io/mode: Reconcile
+    #kubernetes.io/name: "Elasticsearch"
+    app: elasticsearch
+  
+spec:
+  selector:
+    # k8s-app: es-cluster
+    app: elasticsearch
+  clusterIP: None
+  ports:
+  - port: 9200
+    protocol: TCP
+    targetPort: db
+    name: db
+  - port: 9300
+    protocol: TCP
+    targetPort: transport
+    name: transport
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: es-cluster
+  namespace: "{{ .Values.efk.namespace }}"
+  labels:
+    #k8s-app: es-cluster
+    #version: "{{ .Values.elasticsearch.version }}"
+    kubernetes.io/cluster-service: "true"
+    addonmanager.kubernetes.io/mode: Reconcile
+    app: elasticsearch
+spec:
+  serviceName: elasticsearch
+  replicas: {{ .Values.elasticsearch.replicacount }}
+  selector:
+    matchLabels:
+      #k8s-app: es-cluster
+      #version: "{{ .Values.elasticsearch.version }}"
+      app: elasticsearch
+  template:
+    metadata:
+      labels:
+        #k8s-app: es-cluster
+        #version: "{{ .Values.elasticsearch.version }}"
+        kubernetes.io/cluster-service: "true"
+        app: elasticsearch
+    spec:
+      # serviceAccount: es-cluster
+      # serviceAccountName: es-cluster
+      containers:
+      - image: "docker.elastic.co/elasticsearch/elasticsearch-oss:{{ .Values.elasticsearch.version }}"
+        name: elasticsearch
+        resources:
+          # need more cpu upon initialization, therefore burstable class
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 100m
+        ports:
+        - containerPort: 9200
+          name: db
+          protocol: TCP
+        - containerPort: 9300
+          name: transport
+          protocol: TCP
+        volumeMounts:
+        - name: elasticsearch-logging
+          mountPath: /data
+        env:
+        - name: node.name
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: cluster.name
+          value: k8s-logs
+        - name: NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: discovery.zen.ping.unicast.hosts
+          value: "es-cluster-0.elasticsearch,es-cluster-1.elasticsearch,es-cluster-2.elasticsearch"
+        - name: discovery.zen.minimum_master_nodes
+          value: "2"
+        - name: ES_JAVA_OPTS
+          value: "-Xms512m -Xmx512m"
+  volumeClaimTemplates:
+  - metadata:
+      name: elasticsearch-logging
+      labels: 
+        app: elasticsearch
+    spec:
+      storageClassName: "oci"
+      # selector:
+      #  matchLabels: 
+      #    failure-domain.beta.kubernetes.io/zone: "US-PHOENIX-AD-1"
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 50Gi
+      initContainers:
+      - image: busybox
+        command: ["/sbin/sysctl", "-w", "vm.max_map_count=262144"]
+        name: elasticsearch-logging-init
+        securityContext:
+          privileged: true
+      #- image: busybox
+      #  command: ["sh", "-c", "chown -R 1000:1000 /usr/share/elasticsearch/data"]
+      #  name: fix-permissions
+      #  securityContext:
+      #    privileged: true
+        
+      - image: busybox
+        command: ["sh", "-c", "ulimit -n 65536"]
+        name: fix-file-descriptors
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - name: elasticsearch-logging
+          mountPath: /data
