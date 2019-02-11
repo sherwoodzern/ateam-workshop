@@ -71,7 +71,7 @@ tracing                  ClusterIP      10.109.10.118   <none>        80/TCP
 zipkin                   ClusterIP      10.99.46.113    <none>        9411/TCP
 ```
 
-The key component in this list is the istio-ingressgateway. You will notice that it is a type of LoadBalancer and its external IP is localhost, for this deployment. The reason it is localhost in this deployment is because I am using the local Kubernetes cluster in Docker-CE. On the hand, if this was a true external Kubernetes cluster, such as one deployed on Oracle’s OKE, you would be provided a valid external IP address.
+The key component in this list is the istio-ingressgateway. You will notice that it is a type of LoadBalancer and its external IP is localhost, for this deployment. The reason it is localhost in this deployment is because I am using the local Kubernetes cluster in Docker-CE. On the other hand, if this was a true external Kubernetes cluster, such as one deployed on Oracle’s OKE, you would be provided a valid external IP address.
 
 There are two services that we will be exercising. The services can be invoked through curl using one of the two URLs.
 
