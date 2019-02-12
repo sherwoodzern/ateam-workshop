@@ -92,23 +92,23 @@ http://localhost:5601
 
 The dashboard below should be rendered within the browser.
 
-![alt text] (https://github.com/ateam-workshop/day-4/exercises/efk/Resources/kibana.png "Kibana Dashboard")
+![alt text](https://github.com/ateam-workshop/day-4/exercises/efk/Resources/kibana.png "Kibana Dashboard")
 
 In the dashboard select "Discover" in the left-hand navigation.
 
-![alt text] (https://github.com/ateam-workshop/day-4/exercises/efk/Resources/indexPattern.png "Index Page")
+![alt text](https://github.com/ateam-workshop/day-4/exercises/efk/Resources/indexPattern.png "Index Page")
 
 In the Index Pattern we will specify: logstash-*
 Then select "> Next step"
 
-![alt text] (https://github.com/ateam-workshop/day-4/exercises/efk/Resources/createIndexPattern.png "Create Index")
+![alt text](https://github.com/ateam-workshop/day-4/exercises/efk/Resources/createIndexPattern.png "Create Index")
 
-![alt text] (https://github.com/ateam-workshop/day-4/exercises/efk/Resources/configureSettings.png "Configure Settings")
+![alt text](https://github.com/ateam-workshop/day-4/exercises/efk/Resources/configureSettings.png "Configure Settings")
 
-![alt text] (https://github.com/ateam-workshop/day-4/exercises/efk/Resources/indexSummary.png "Summary")
+![alt text](https://github.com/ateam-workshop/day-4/exercises/efk/Resources/indexSummary.png "Summary")
 
-![alt text] (https://github.com/ateam-workshop/day-4/exercises/efk/Resources/graphReporting.png "Graph")
+![alt text](https://github.com/ateam-workshop/day-4/exercises/efk/Resources/graphReporting.png "Graph")
 
-![alt text] (https://github.com/ateam-workshop/day-4/exercises/efk/Resources/discover.png "Discover")
+![alt text](https://github.com/ateam-workshop/day-4/exercises/efk/Resources/discover.png "Discover")
 
 
