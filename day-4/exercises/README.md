@@ -94,7 +94,6 @@ The dashboard below should be rendered within the browser.
 
 https://github.com/ateam-workshop/day-4/exercises/efk/Resources/kibana.png
 
-
 In the dashboard select "Discover" in the left-hand navigation.
 
 https://github.com/ateam-workshop/day-4/exercises/efk/Resources/indexPattern.png
@@ -111,4 +110,5 @@ https://github.com/ateam-workshop/day-4/exercises/efk/Resources/indexSummary.png
 https://github.com/ateam-workshop/day-4/exercises/efk/Resources/graphReporting.png
 
 https://github.com/ateam-workshop/day-4/exercises/efk/Resources/discover.png
+
 
