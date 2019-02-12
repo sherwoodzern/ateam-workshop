@@ -94,12 +94,15 @@ The dashboard below should be rendered within the browser.
 
 ![alt text](https://github.com/sherwoodzern/ateam-workshop/blob/master/day-4/exercises/efk/Resources/kibana.png "Kibana Dashboard")
 
-In the dashboard select "Discover" in the left-hand navigation.
+In the dashboard select "Discover" in the left-hand navigation.  You should see the following configuration window:
 
 ![alt text](https://github.com/sherwoodzern/ateam-workshop/blob/master/day-4/exercises/efk/Resources/indexPattern.png "Index Page")
 
-In the Index Pattern we will specify: logstash-*
-Then select "> Next step"
+This allows you to define the Elastisearch indices you'd like to explore in Kibana. For our purposes we'll just use the logstash-* wildard pattern to capture all the log data in our Elasticsearch cluster. Enter ```logstash-*``` in the text box and click on ```Next Step```
+
+Upon successfully selecting Next Step you will be brought to this page:
+
+This page allows you to configure which field Kibana will use to filter log data by time.  In the dropdown, select the @timestamp field, and hit ```Create index pattern.```
 
 ![alt text](https://github.com/sherwoodzern/ateam-workshop/blob/master/day-4/exercises/efk/Resources/createIndexPattern.png "Create Index")
 
