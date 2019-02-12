@@ -1,6 +1,10 @@
 # Deploying ElasticSearch, Fluentd, Kibana (EFK)
 
-In this lab you will deploy EFK to your cluster using Helm.  Navigate to the efk directory under the day-4 exercises.  From this location execute the following:
+In this lab you will deploy EFK to your cluster using Helm.  Navigate to the efk directory under the day-4 exercises.  
+
+Download the ```efk``` directory from the day-4/exercises. You will be using Helm to install EFK. You need to execute the helm install from the directory immediately above the EFK directory.  Do not be in the ```efk`` directory.
+
+From this location execute the following:
 
 ```bash
 
@@ -104,12 +108,12 @@ Upon successfully selecting Next Step you will be brought to this page:
 
 This page allows you to configure which field Kibana will use to filter log data by time.  In the dropdown, select the @timestamp field, and hit ```Create index pattern.```
 
-![alt text](https://github.com/sherwoodzern/ateam-workshop/blob/master/day-4/exercises/efk/Resources/createIndexPattern.png "Create Index")
-
-![alt text](https://github.com/sherwoodzern/ateam-workshop/blob/master/day-4/exercises/efk/Resources/configureSettings.png "Configure Settings")
+When the index has been created the summary page of ```Index Patterns`` page will be shown.
 
 ![alt text](https://github.com/sherwoodzern/ateam-workshop/blob/master/day-4/exercises/efk/Resources/indexSummary.png "Summary")
 
+On the left-hand navigation menu select ```Discover```. You should see a histogram graph and some recent log entries:
+
 ![alt text](https://github.com/sherwoodzern/ateam-workshop/blob/master/day-4/exercises/efk/Resources/graphReporting.png "Graph")
 
-![alt text](https://github.com/sherwoodzern/ateam-workshop/blob/master/day-4/exercises/efk/Resources/discover.png "Discover")
+You can click into any of the log entries to see additional metadata like the container name, Kubernetes node, Namespace, and other metadata.
