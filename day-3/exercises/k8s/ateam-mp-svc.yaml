@@ -32,7 +32,7 @@ spec:
                 version: v1
         spec:
             containers:
-                - image: {<github-acct>/image-name}:{tag}
+                - image: {<dockerhub-acct>/image-name}:{tag}
                   imagePullPolicy: Always
                   name: welcome
                   ports:
