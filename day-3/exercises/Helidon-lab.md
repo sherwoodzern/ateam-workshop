@@ -82,8 +82,8 @@ For this tutorial you will be using your own github repository. In upcoming tuto
 ```
 docker login (provide your userId and password when prompted)
 docker build -t ateam-mp:latest target
-docker tag ateam-mp:latest <github user>/ateam-mp:1.0.0
-docker push <dockerhub-user>/ateam-mp:1.0.0
+docker tag ateam-mp:latest <dockerhub user>/ateam-mp:1.0.0
+docker push <dockerhub user>/ateam-mp:1.0.0
 ```
 
 6. If you would like to start the application with Docker run: 
