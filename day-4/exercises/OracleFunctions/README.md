@@ -4,7 +4,7 @@ In this lab you will configure, build, and deploy a serverless function to the O
 
 There are three main sections in this lab; Set up your tenancy, Set up your client, and Create, deploy, and invoke your function. For you to have a successful lab it is important to make sure you follow the steps closely. As previously stated, this is a Limited Availability release and therefore is not streamlined in the setup and configuration.
 
-In the ```OracleFunctions``` directory is a pdf document, ```Oracle_Functions_Overview.pdf``. This document is step-by-step in setting up, configuring, and building and deploying your serverless function.  
+In the ```OracleFunctions``` directory is a pdf document, ```Oracle_Functions_Overview.pdf```. This document is step-by-step in setting up, configuring, and building and deploying your serverless function.  
 
 Since we are already in the Phoenix region we are already subscribed to the Limited Availability and have been whitelisted.
 
